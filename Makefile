@@ -1,4 +1,4 @@
-IMAGE = "jahrik/arm-visualizer"
+IMAGE = "jahrik/arm-mysql"
 TAG = "arm32v7"
 
 all: build
@@ -12,6 +12,6 @@ push:
 	@docker push ${IMAGE}:latest
 
 deploy:
-	@docker stack deploy --resolve-image=never -c visualizer-stack.yml viz
+	@docker stack deploy --resolve-image=never -c mysql-stack.yml mysql
 
 .PHONY: all build push deploy
