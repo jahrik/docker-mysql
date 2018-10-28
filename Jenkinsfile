@@ -5,7 +5,7 @@ env.MYSQL_DATABASE=""
 env.MYSQL_USER=""
 env.MYSQL_PASSWORD=""
 
-node('arm32v7') {
+node('aarch64') {
 
     try {
 
