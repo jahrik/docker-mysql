@@ -12,6 +12,6 @@ push:
 	@docker push ${IMAGE}:latest
 
 deploy:
-	@docker stack deploy --resolve-image=never -c mysql-stack.yml mysql
+	@docker stack deploy --resolve-image=never -c docker-compose.yml mysql
 
 .PHONY: all build push deploy

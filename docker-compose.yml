@@ -16,5 +16,5 @@ services:
     deploy:
       mode: replicated
       replicas: 1
-      placement:
-        constraints: [node.labels.mysql == true ]
+      # placement:
+        # constraints: [node.labels.mysql == true ]
