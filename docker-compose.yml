@@ -10,7 +10,7 @@ services:
       - MYSQL_USER="${MYSQL_USER}"
       - MYSQL_PASSWORD="${MYSQL_PASSWORD}"
     volumes:
-      - /mnt/g2/mysql:/var/lib/mysql/
+      - /mnt/g1/mysql:/var/lib/mysql/
     ports:
       - 3306:3306
     deploy:
