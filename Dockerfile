@@ -1,1 +1,2 @@
-FROM hypriot/rpi-mysql
+FROM arm64v8/mariadb
+

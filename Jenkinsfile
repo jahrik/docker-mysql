@@ -1,41 +1,40 @@
 #!/usr/bin/env groovy
 
-env.MYSQL_ROOT_PASSWORD=""
-env.MYSQL_DATABASE=""
-env.MYSQL_USER=""
-env.MYSQL_PASSWORD=""
+mysql_root_pass = 'mysql-root-pass'
+mysql_user_pass = 'mysql-user-pass'
+mysql_database = 'mysql-database'
 
-node('manager') {
+node('aarch64') {
 
     try {
 
         stage('build') {
-            // Clean workspace
             deleteDir()
-            // Checkout the app at the given commit sha from the webhook
             checkout scm
             sh "make"
         }
 
-        stage('test') {
-            echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-            // Run any testing suites
-        }
-
         stage('push') {
-            // Push to Dockerhub
             sh "make push"
         }
 
         stage('deploy') {
-            sh "make deploy"
+          withCredentials([
+            usernamePassword(credentialsId: mysql_user_pass,
+              usernameVariable: 'MYSQL_USER',
+              passwordVariable: 'MYSQL_PASSWORD'),
+            string(credentialsId: mysql_root_pass,
+              variable: 'MYSQL_ROOT_PASSWORD'),
+            string(credentialsId: mysql_database,
+              variable: 'MYSQL_DATABASE')]) {
+              sh "make deploy"
+            }
         }
 
     } catch(error) {
         throw error
 
     } finally {
-        // Any cleanup operations needed, whether we hit an error or not
 
     }
 }
