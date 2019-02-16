@@ -17,4 +17,5 @@ services:
       mode: replicated
       replicas: 1
       placement:
-        constraints: node.labels.arch == aarch64
+        constraints:
+          - node.labels.arch == aarch64
