@@ -5,7 +5,7 @@ env.MYSQL_DATABASE=""
 env.MYSQL_USER=""
 env.MYSQL_PASSWORD=""
 
-node('aarch64') {
+node('manager') {
 
     try {
 
