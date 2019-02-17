@@ -11,6 +11,7 @@ services:
       MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
     networks:
       - ghost
+      - monitor
     volumes:
       - /mnt/g1/mysql:/var/lib/mysql/
     ports:
