@@ -27,3 +27,7 @@ networks:
     name: ghost
     driver: overlay
     external: true
+  monitor:
+    name: monitor
+    driver: overlay
+    external: true
