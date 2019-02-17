@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
 
@@ -9,6 +9,8 @@ services:
       MYSQL_DATABASE: "${MYSQL_DATABASE}"
       MYSQL_USER: "${MYSQL_USER}"
       MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+    networks:
+      - ghost
     volumes:
       - /mnt/g1/mysql:/var/lib/mysql/
     ports:
@@ -19,3 +21,9 @@ services:
       placement:
         constraints:
           - node.labels.arch == aarch64
+
+networks:
+  ghost:
+    name: ghost
+    driver: overlay
+    external: true
