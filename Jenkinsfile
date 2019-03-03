@@ -8,14 +8,34 @@ node('aarch64') {
 
     try {
 
-        stage('build') {
+        stage('scm') {
             deleteDir()
             checkout scm
+        }
+
+        stage('build') {
             sh "make"
         }
 
         stage('push') {
             sh "make push"
+        }
+
+    } catch(error) {
+        throw error
+
+    } finally {
+
+    }
+}
+
+node('manager') {
+
+    try {
+
+        stage('scm') {
+            deleteDir()
+            checkout scm
         }
 
         stage('deploy') {
