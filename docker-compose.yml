@@ -3,14 +3,14 @@ version: '3.7'
 services:
 
   mysql:
-    image: jahrik/arm-mysql:aarch64
+    image: "jahrik/mysql:${TAG}"
     environment:
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
       MYSQL_DATABASE: "${MYSQL_DATABASE}"
       MYSQL_USER: "${MYSQL_USER}"
       MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
     networks:
-      - ghost
+#      - ghost
       - monitor
     volumes:
       - /mnt/g1/mysql:/var/lib/mysql/
@@ -19,15 +19,15 @@ services:
     deploy:
       mode: replicated
       replicas: 1
-      placement:
-        constraints:
-          - node.labels.arch == aarch64
+#       placement:
+#         constraints:
+#           - node.labels.arch == aarch64
 
 networks:
-  ghost:
-    name: ghost
-    driver: overlay
-    external: true
+#   ghost:
+#     name: ghost
+#     driver: overlay
+#     external: true
   monitor:
     name: monitor
     driver: overlay
