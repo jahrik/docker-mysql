@@ -1,20 +1,12 @@
 .EXPORT_ALL_VARIABLES:
-IMAGE="jahrik/mysql"
-ifeq ($(shell uname -m),aarch64)
-	ARCH:=arm64v8
-else ifeq ($(shell uname -m),x86_64)
-	ARCH:=amd64
-endif
-TAG:=10.2
-STACK=mysql
+IMAGE = "jahrik/mysql"
+TAG = latest
+STACK = mysql
 
 all: build
 
 build:
-	@docker build \
-		-t ${IMAGE}:$(TAG) \
-		--build-arg ARCH=${ARCH} \
-		--build-arg TAG=${TAG} .
+	@docker build -t ${IMAGE}:$(TAG) .
 
 push:
 	@docker push ${IMAGE}:$(TAG)

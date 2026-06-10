@@ -1,3 +1,2 @@
-ARG TAG=
-ARG ARCH=
-FROM ${ARCH}/mariadb:${TAG}
+FROM docker.io/library/mariadb:11.8
+LABEL org.opencontainers.image.authors="jahrik@gmail.com"
