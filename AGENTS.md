@@ -28,7 +28,7 @@ make deploy  # docker stack deploy -c docker-compose.yml mysql
 
 ## Local testing
 
-Docker is not installed on this machine — `docker` is a Podman shim, so `make build` works as-is. Verify with:
+Build and verify locally:
 
 ```bash
 docker run --rm -d --name mysql-test -e MARIADB_ROOT_PASSWORD=test jahrik/mysql:latest
