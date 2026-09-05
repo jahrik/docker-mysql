@@ -11,7 +11,7 @@ docker pull jahrik/mysql
 ## Build
 
 ```bash
-make build
+just build
 ```
 
 The MariaDB version is pinned in the Dockerfile `FROM` line (currently 11.8 LTS) — bump it there to upgrade. The official image is multi-arch, so no per-architecture build args are needed.
@@ -35,7 +35,7 @@ All [official mariadb environment variables](https://hub.docker.com/_/mariadb) w
 `docker-compose.yml` deploys a replicated service on the external `monitor` overlay network, with data on `/mnt/g1/mysql`. Set `MYSQL_ROOT_PASSWORD`, `MYSQL_DATABASE`, `MYSQL_USER`, and `MYSQL_PASSWORD` in the environment, then:
 
 ```bash
-make deploy
+just deploy
 ```
 
 ## CI

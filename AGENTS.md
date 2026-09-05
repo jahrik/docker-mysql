@@ -9,9 +9,9 @@ Produces `jahrik/mysql` — a thin wrapper around the official `mariadb` LTS ima
 ## Build & Push
 
 ```bash
-make build   # build locally as jahrik/mysql:latest
-make push    # push to Docker Hub
-make deploy  # docker stack deploy -c docker-compose.yml mysql
+just build   # build locally as jahrik/mysql:latest
+just push    # push to Docker Hub
+just deploy  # docker stack deploy -c docker-compose.yml mysql
 ```
 
 ## CI
